@@ -1,5 +1,5 @@
 import React from 'react'
-import { ContextProvider } from '../../../features/todos/context/TodoContext'
+import { ContextProvider } from '../features/todos/context/TodoContext'
 import TodoForm from '../../../features/todos/components/TodoForm'
 import ShowTodos from '../../../features/todos/components/ShowTodos'
 
