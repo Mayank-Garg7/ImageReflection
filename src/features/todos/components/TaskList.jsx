@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import Card from '../../shared/Card'
+import Card from '../../../shared/Card'
 import TodoContext from '../context/TodoContext'
 
 function TaskList({ item }) {
