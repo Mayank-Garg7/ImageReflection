@@ -1,38 +1,49 @@
 import { createContext, useEffect, useState } from "react";
-import Tasks from "../mock/Tasks.json"
+import Tasks from "../mock/Tasks.json";
 
+const TodoContext = createContext();
 
-const TodoContext = createContext()
+export const ContextProvider = ({ children }) => {
+  const [task, setTask] = useState(() => {
+    const data = localStorage.getItem("TaskData");
 
-
-export const ContextProvider = ({children}) => {
-    const [task, setTask] = useState(() => {
-        const data = localStorage.getItem("TaskData");
-        return data ? JSON.parse(data) : Tasks
-    })
-
-
-    useEffect(() => {
-        localStorage.setItem("TaskData", JSON.stringify(Tasks))
-    }, [task])
-
-
-    const handleStatusChange= (event, id) => {
-        setTask((prev) => prev.map((item) => item.id === id ? item.status : ""))
+    try {
+      return data ? JSON.parse(data) : Tasks;
+    } catch (error) {
+      console.error("Invalid localStorage data:", error);
+      return Tasks;
     }
+  });
 
+  // Save tasks to localStorage whenever task changes
+  useEffect(() => {
+    localStorage.setItem("TaskData", JSON.stringify(task));
+  }, [task]);
 
+  // Update task status
+  const handleStatusChange = (event, id) => {
+    const checked = event.target.checked;
 
-    return(
-        <TodoContext.Provider
-        value={{
-            task,
-            handleStatusChange,
+    setTask((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? { ...item, status: checked }
+          : item
+      )
+    );
+  };
 
-        }}>
-            {children}
-        </TodoContext.Provider>
-    )
-}
+  return (
+    <TodoContext.Provider
+      value={{
+        task,
+        setTask,
+        handleStatusChange,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+};
 
-export default TodoContext
+export default TodoContext;
