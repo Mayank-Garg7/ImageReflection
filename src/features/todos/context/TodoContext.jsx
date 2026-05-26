@@ -22,22 +22,21 @@ export const ContextProvider = ({ children }) => {
 
   // Update task status
   const handleStatusChange = (event, id) => {
-    const checked = event.target.checked;
+    const checked = event.target.value;
+    setTask((prev)=> prev.map((data)=> {
 
-    setTask((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, status: checked }
-          : item
-      )
-    );
+        if(data.id === id){
+            return{...data, status: checked}
+        }
+        return data
+    }
+    ))
   };
 
   return (
     <TodoContext.Provider
       value={{
         task,
-        setTask,
         handleStatusChange,
       }}
     >
