@@ -8,18 +8,14 @@ function TodoForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (!text.trim()) return;
-
     const newTask = {
       id: Date.now(),
       text: text,
       status: "pending",
       priority: "medium",
     };
-
     setTask([...task, newTask]);
-
     setText("");
   };
 
