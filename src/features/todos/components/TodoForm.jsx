@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import TodoContext from "../context/TodoContext";
+import Card from "../../../shared/Card";
 
 function TodoForm() {
   const [text, setText] = useState("");
@@ -19,7 +20,7 @@ function TodoForm() {
 
     const newTask = {
       id: Date.now(),
-      text: text,
+      text,
       status: "pending",
       priority: "medium",
     };
@@ -29,43 +30,77 @@ function TodoForm() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto mt-10">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-lg rounded-2xl p-6 border border-gray-100"
-      >
-        <h2 className="text-2xl font-bold text-gray-800 mb-4">
-          Add New Task
-        </h2>
+    <Card>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <div>
+          <h2 className="text-lg font-semibold tracking-tight text-slate-800">
+            Create Task
+          </h2>
 
-        <div className="flex flex-col gap-3">
+          <p className="mt-1 text-sm text-slate-500">
+            Add a new task to manage your workflow
+          </p>
+        </div>
+
+        <div>
           <input
             type="text"
-            placeholder="Enter your task..."
+            placeholder="Enter task..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="w-full px-4 py-3 rounded-xl border border-gray-300 
-                       focus:outline-none focus:ring-2 focus:ring-blue-500 
-                       focus:border-blue-500 transition duration-200"
+            className="
+              w-full
+              rounded-lg
+              border
+              border-slate-300
+              bg-white
+              px-3
+              py-2.5
+              text-sm
+              text-slate-700
+              shadow-sm
+              outline-none
+              transition
+              duration-200
+              placeholder:text-slate-400
+              focus:border-blue-500
+              focus:ring-4
+              focus:ring-blue-100
+            "
           />
 
           {message && (
-            <p className="text-red-500 text-sm font-medium">
+            <p className="mt-2 text-sm font-medium text-red-500">
               Task must be at least 10 characters long.
             </p>
           )}
-
-          <button
-            type="submit"
-            className="bg-blue-600 hover:bg-blue-700 text-white 
-                       font-semibold py-3 rounded-xl transition duration-300 
-                       shadow-md hover:shadow-lg"
-          >
-            Add Task
-          </button>
         </div>
+
+        <button
+          type="submit"
+          className="
+            inline-flex
+            items-center
+            justify-center
+            rounded-lg
+            bg-slate-800
+            px-4
+            py-2.5
+            text-sm
+            font-medium
+            text-white
+            transition
+            duration-200
+            hover:bg-slate-700
+            focus:outline-none
+            focus:ring-4
+            focus:ring-slate-200
+          "
+        >
+          Add Task
+        </button>
       </form>
-    </div>
+    </Card>
   );
 }
 
