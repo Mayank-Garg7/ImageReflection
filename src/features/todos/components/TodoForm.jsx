@@ -1,6 +1,8 @@
 import React, { useState, useContext } from "react";
 import TodoContext from "../context/TodoContext";
+
 import Card from "../../../shared/Card";
+import Button from "../../../shared/Button";
 
 function TodoForm() {
   const [text, setText] = useState("");
@@ -31,21 +33,24 @@ function TodoForm() {
 
   return (
     <Card>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+        
+        {/* Header */}
         <div>
-          <h2 className="text-lg font-semibold tracking-tight text-slate-800">
-            Create Task
+          <h2 className="text-xl font-semibold tracking-tight text-slate-800">
+            Create New Task
           </h2>
 
           <p className="mt-1 text-sm text-slate-500">
-            Add a new task to manage your workflow
+            Add and organize your daily workflow
           </p>
         </div>
 
+        {/* Input */}
         <div>
           <input
             type="text"
-            placeholder="Enter task..."
+            placeholder="Enter your task..."
             value={text}
             onChange={(e) => setText(e.target.value)}
             className="
@@ -54,8 +59,8 @@ function TodoForm() {
               border
               border-slate-300
               bg-white
-              px-3
-              py-2.5
+              px-4
+              py-3
               text-sm
               text-slate-700
               shadow-sm
@@ -76,29 +81,12 @@ function TodoForm() {
           )}
         </div>
 
-        <button
-          type="submit"
-          className="
-            inline-flex
-            items-center
-            justify-center
-            rounded-lg
-            bg-slate-800
-            px-4
-            py-2.5
-            text-sm
-            font-medium
-            text-white
-            transition
-            duration-200
-            hover:bg-slate-700
-            focus:outline-none
-            focus:ring-4
-            focus:ring-slate-200
-          "
-        >
-          Add Task
-        </button>
+        {/* Button */}
+        <div className="flex justify-end">
+          <Button>
+            Add Task
+          </Button>
+        </div>
       </form>
     </Card>
   );
