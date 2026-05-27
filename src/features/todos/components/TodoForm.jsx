@@ -3,12 +3,16 @@ import TodoContext from "../context/TodoContext";
 
 function TodoForm() {
   const [text, setText] = useState("");
+    const [message, setMessage] = useState(false);
 
   const { task, setTask } = useContext(TodoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!text.trim()) return;
+    if (text.trim().length === 0 || text.trim().length < 10 ){
+      setMessage(true);
+      return
+    }
     const newTask = {
       id: Date.now(),
       text: text,
