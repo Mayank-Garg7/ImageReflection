@@ -7,27 +7,22 @@ import Button from "../../../shared/Button";
 function TodoForm() {
   const [text, setText] = useState("");
   const [message, setMessage] = useState(false);
-
-  const { task, setTask } = useContext(TodoContext);
+  const { add_Task } = useContext(TodoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (text.trim().length < 10) {
       setMessage(true);
       return;
     }
-
     setMessage(false);
-
     const newTask = {
       id: Date.now(),
       text,
       status: "pending",
       priority: "medium",
     };
-
-    setTask([...task, newTask]);
+    add_Task(newTask);
     setText("");
   };
 
@@ -53,26 +48,7 @@ function TodoForm() {
             placeholder="Enter your task..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="
-              w-full
-              rounded-lg
-              border
-              border-slate-300
-              bg-white
-              px-4
-              py-3
-              text-sm
-              text-slate-700
-              shadow-sm
-              outline-none
-              transition
-              duration-200
-              placeholder:text-slate-400
-              focus:border-blue-500
-              focus:ring-4
-              focus:ring-blue-100
-            "
-          />
+            className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm outline-none transition duration-200 placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"/>
 
           {message && (
             <p className="mt-2 text-sm font-medium text-red-500">

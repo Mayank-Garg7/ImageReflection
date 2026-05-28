@@ -4,9 +4,15 @@ import Tasks from "../mock/Tasks.json";
 const TodoContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+
+
+  const add_Task = (newTask) => {
+    setTask((prev) => [...prev, newTask]);
+  };
+
+
   const [task, setTask] = useState(() => {
     const data = localStorage.getItem("TaskData");
-
     try {
       return data ? JSON.parse(data) : Tasks;
     } catch (error) {
@@ -15,16 +21,17 @@ export const ContextProvider = ({ children }) => {
     }
   });
 
+
   // Save tasks to localStorage whenever task changes
   useEffect(() => {
     localStorage.setItem("TaskData", JSON.stringify(task));
   }, [task]);
 
+
   // Update task status
   const handleStatusChange = (event, id) => {
     const checked = event.target.value;
     setTask((prev)=> prev.map((data)=> {
-
         if(data.id === id){
             return{...data, status: checked}
         }
@@ -33,10 +40,12 @@ export const ContextProvider = ({ children }) => {
     ))
   };
 
+
   return (
     <TodoContext.Provider
       value={{
         task,
+        add_Task,
         handleStatusChange,
       }}
     >
