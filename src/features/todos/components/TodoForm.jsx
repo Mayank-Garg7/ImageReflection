@@ -7,27 +7,22 @@ import Button from "../../../shared/Button";
 function TodoForm() {
   const [text, setText] = useState("");
   const [message, setMessage] = useState(false);
-
-  const { task, setTask } = useContext(TodoContext);
+  const { add_Task } = useContext(TodoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (text.trim().length < 10) {
       setMessage(true);
       return;
     }
-
     setMessage(false);
-
     const newTask = {
       id: Date.now(),
       text,
       status: "pending",
       priority: "medium",
     };
-
-    setTask([...task, newTask]);
+    add_Task(newTask);
     setText("");
   };
 
