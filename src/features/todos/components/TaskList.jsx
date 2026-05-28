@@ -98,7 +98,42 @@ function TaskList({ item }) {
           </div>
 
           {/* Status Dropdown */}
+          <div className="min-w-42.5">
+            <label className="mb-1 block text-xs font-medium text-slate-500">
+              Update Status
+            </label>
 
+            <select
+              value={item.status}
+              onChange={(e) =>
+                handleStatusChange(e, item.id)
+              }
+              disabled={item.status === "completed"}
+              className="
+                w-full
+                rounded-lg
+                border border-slate-300
+                bg-white
+                px-3 py-2.5
+                text-sm font-medium text-slate-700
+                shadow-sm
+                outline-none
+                transition duration-200
+
+                focus:border-blue-500
+                focus:ring-4
+                focus:ring-blue-100
+
+                disabled:cursor-not-allowed
+                disabled:bg-slate-100
+                disabled:text-slate-400
+              "
+            >
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+        </div>
 
         {/* ========================================
             Action Buttons
