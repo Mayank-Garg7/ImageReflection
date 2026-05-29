@@ -1,15 +1,9 @@
 import React, { useState } from 'react'
-import Button from '../../shared/Button'
 import Card from '../../shared/Card'
 
 function Calculator() {
 
-    const arr = [
-        "0", "1", "2", "3",
-        "4", "5", "6", "7",
-        "8", "9", "+", "-",
-        "/", "*", "ac", "="
-    ]
+    const arr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+", "-", "/", "*", "ac", "="]
 
     const [value, setValue] = useState("")
 
@@ -52,14 +46,15 @@ function Calculator() {
                     <div className="grid grid-cols-4 gap-5">
 
                         {arr.map((data, idx) => (
-                            <Button
+                            <button
+                            className='px-4 py-2 rounded-md font-medium transition duration-200 bg-gray-500 text-white hover:bg-gray-600 disabled:bg-gray-300'
                                 key={idx}
                                 variant="secondary"
                                 type="button"
-                                onClick={() => handleButtonClick(data)}
+                                onClick={() => handlebuttonClick(data)}
                             >
                                 {data}
-                            </Button>
+                            </button>
                         ))}
 
                     </div>
