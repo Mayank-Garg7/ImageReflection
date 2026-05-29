@@ -18,8 +18,8 @@ function Navbar() {
         </li>
 
         <li>
-          <a href="/about" className="hover:text-sky-400 transition">
-            About
+          <a href="/features" className="hover:text-sky-400 transition">
+            Features
           </a>
         </li>
 
