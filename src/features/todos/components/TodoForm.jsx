@@ -27,7 +27,7 @@ function TodoForm() {
   };
 
   return (
-    <div >
+    <div className="w-xl justify-self-center-safe mt-5">
       <Card>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
