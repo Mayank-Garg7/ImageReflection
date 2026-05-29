@@ -27,44 +27,46 @@ function TodoForm() {
   };
 
   return (
-    <Card>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-        
-        {/* Header */}
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight text-slate-800">
-            Create New Task
-          </h2>
+    <div className="w-xl justify-self-center-safe mt-5">
+      <Card>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
-          <p className="mt-1 text-sm text-slate-500">
-            Add and organize your daily workflow
-          </p>
-        </div>
+          {/* Header */}
+          <div>
+            <h2 className="text-xl font-semibold tracking-tight text-slate-800">
+              Create New Task
+            </h2>
 
-        {/* Input */}
-        <div>
-          <input
-            type="text"
-            placeholder="Enter your task..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm outline-none transition duration-200 placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"/>
-
-          {message && (
-            <p className="mt-2 text-sm font-medium text-red-500">
-              Task must be at least 10 characters long.
+            <p className="mt-1 text-sm text-slate-500">
+              Add and organize your daily workflow
             </p>
-          )}
-        </div>
+          </div>
 
-        {/* Button */}
-        <div className="flex justify-end">
-          <Button>
-            Add Task
-          </Button>
-        </div>
-      </form>
-    </Card>
+          {/* Input */}
+          <div>
+            <input
+              type="text"
+              placeholder="Enter your task..."
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm outline-none transition duration-200 placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100" />
+
+            {message && (
+              <p className="mt-2 text-sm font-medium text-red-500">
+                Task must be at least 10 characters long.
+              </p>
+            )}
+          </div>
+
+          {/* Button */}
+          <div className="flex justify-end">
+            <Button>
+              Add Task
+            </Button>
+          </div>
+        </form>
+      </Card>
+    </div>
   );
 }
 
