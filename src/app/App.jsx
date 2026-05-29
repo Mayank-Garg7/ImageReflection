@@ -3,6 +3,7 @@ import { ContextProvider } from '../features/todos/context/TodoContext'
 import TodoForm from '../features/todos/components/TodoForm'
 import ShowTodos from '../features/todos/components/ShowTodos'
 import Navbar from '../shared/Navbar'
+import Calculator from '../features/calculator/Calculator'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Navbar />
       <TodoForm />
       <ShowTodos />
+      <Calculator />
     </ContextProvider>
   )
 }
