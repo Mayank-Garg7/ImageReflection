@@ -8,16 +8,16 @@ function Calculator() {
         <div className="w-xl justify-self-center-safe mt-5">
             <Card>
                 <form>
-                    <input 
-                    type="text" 
-                    placeholder='calculate...' 
-                    className="w-full rounded-lg border px-4 py-3  text-slate-700  outline-none transition duration-200 placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
+                    <input
+                        type="text"
+                        placeholder='calculate...'
+                        className="w-full mb-5 rounded-lg border px-4 py-3  text-slate-700  outline-none transition duration-200 placeholder:text-slate-400 focus:border-blue-500 focus:ring-4 focus:ring-blue-100"
                     />
-                    <div className='grid grid-cols-3'>
+                    <div className='grid grid-cols-4 gap-2'>
                         {arr.map((data, idx) => (
-                            <Button key={idx} variant='secondary'>
-                                <span>{data}</span>
-                            </Button>
+                                <Button key={idx} variant='secondary'>
+                                    <span>{data}</span>
+                                </Button>
                         ))}
                     </div>
                 </form>
