@@ -8,6 +8,9 @@ function Calculator() {
     const handleOnChange = (e) => {
         console.log(e.target.value)
     }
+    const handleInput = (e) => {
+        
+    }
     return (
         <div className="w-lg justify-self-center-safe mt-5">
             <Card>
